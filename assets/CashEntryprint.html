@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucky Shop</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+    crossorigin="anonymous"
+  />
+</head>
+<body>
+    
+<div class="heading container">
+    <h2></h2>
+</div>
+
+<div class="containers" id="main">  
+   
+</div>
+
+<script>
+    let main = document.getElementById('main');
+    let dom = ` 
+    <h2 class="text-center"> Cash Entry </h2>
+    <table class="table">
+
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Date</th>
+            <th scope="col">Amount</th>         
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>`;
+      main.innerHTML = dom;
+    let tbody = document.getElementById('tbody');
+const Cash = JSON.parse(localStorage.getItem("CashEntry") || "[]");
+    function showData() {
+  let html = "";
+  Cash.forEach((element, index) => {
+    console.log(element);
+    let dom = `<tr id="row">
+    <th scope="row">${index + 1}</th>
+    <td>${element.Cname}</td>
+    <td>${element.Cdate}</td>
+    <td>${element.CRate}</td>
+    <td onClick="deleterow(${index})" class="delete"><img src="../fontawesome-free-6.4.0-web/svgs/regular/trash-can.svg" alt="" height="20px" width="20px"></td>
+    </tr>`;
+    html += dom;
+  });
+  tbody.innerHTML = html;
+}
+function deleterow(index) {
+  Cash.splice(index, 1);
+  localStorage.setItem("CashEntry", JSON.stringify(Cash));
+  showData();
+}
+window.print();
+showData();
+</script>
+
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"
+  ></script>
+</body>
+</html>
