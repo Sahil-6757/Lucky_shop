@@ -10,7 +10,7 @@ let tbody = document.getElementById('tbody');
 let Sales_entry = document.getElementById('Sales_entry');
 let Homebtn = document.getElementById('Home');
 let printbtn = document.getElementById('downloadbtn');
-let CashEntry = document.getElementById('CashEntry');
+let CashEntry = document.getElementById('Cash_Entry');
 
 showData();
 submitbtn.addEventListener('click', () => {
